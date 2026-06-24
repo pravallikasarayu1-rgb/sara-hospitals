@@ -1,38 +1,68 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import Home from "./Home";
+import Doctors from "./Doctors";
+import Booking from "./Booking";
+import Admin from "./Admin";
+
 import "./App.css";
 
-export default function App() {
-  const [message, setMessage] = useState("");
 
-  const bookAppointment = () => {
-    setMessage("Appointment request submitted successfully!");
-  };
+export default function App(){
 
-  return (
-    <>
-      <nav className="navbar">
-        <div className="logo">SARA Hospitals</div>
-      </nav>
+return(
 
-      <section className="hero">
-        <div className="hero-content">
-          <h1>Advanced Medical Care</h1>
-          <p>World-class healthcare for every patient.</p>
+<BrowserRouter>
 
-          <button
-            className="primary-btn"
-            onClick={bookAppointment}
-          >
-            Book Appointment
-          </button>
 
-          {message && (
-            <p style={{ marginTop: "20px" }}>
-              {message}
-            </p>
-          )}
-        </div>
-      </section>
-    </>
-  );
+<nav className="navbar">
+
+<div className="logo">
+🏥 SARA Hospitals
+</div>
+
+
+<div className="nav-links">
+
+<Link to="/">
+Home
+</Link>
+
+<Link to="/doctors">
+Doctors
+</Link>
+
+<Link to="/booking">
+Appointment
+</Link>
+
+<Link to="/admin">
+Admin
+</Link>
+
+</div>
+
+
+</nav>
+
+
+
+<Routes>
+
+<Route path="/" element={<Home/>}/>
+
+<Route path="/doctors" element={<Doctors/>}/>
+
+<Route path="/booking" element={<Booking/>}/>
+
+<Route path="/admin" element={<Admin/>}/>
+
+</Routes>
+
+
+
+</BrowserRouter>
+
+);
+
 }
